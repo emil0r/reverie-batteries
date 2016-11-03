@@ -1,4 +1,4 @@
-(ns reverie.sql.objects.image
+(ns reverie.batteries.objects.image
   (:require [ez-image.core :as ez]
             [me.raynes.fs :as fs]
             [reverie.core :refer [defobject]]
@@ -26,7 +26,7 @@
 
 (defobject reverie/image
   {:table "batteries_image"
-   :migration {:path "src/reverie/sql/objects/migrations/image/"
+   :migration {:path "src/reverie/batteries/objects/migrations/image/"
                :automatic? true}
    :fields {:title {:name "Title"
                     :type :text

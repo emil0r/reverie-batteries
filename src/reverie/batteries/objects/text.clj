@@ -1,4 +1,4 @@
-(ns reverie.sql.objects.text
+(ns reverie.batteries.objects.text
   (:require [reverie.core :refer [defobject]]))
 
 (defn- text [request object {:keys [text]} params]
@@ -6,7 +6,7 @@
 
 (defobject reverie/text
   {:table "batteries_text"
-   :migration {:path "src/reverie/sql/objects/migrations/text/"
+   :migration {:path "src/reverie/batteries/objects/migrations/text/"
                :automatic? true}
    :fields {:text {:initial ""
                    :type :richtext

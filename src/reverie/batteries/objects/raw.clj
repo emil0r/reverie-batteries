@@ -1,4 +1,4 @@
-(ns reverie.sql.objects.raw
+(ns reverie.batteries.objects.raw
   (:require [hiccup.util :refer [escape-html]]
             [reverie.core :refer [defobject]]))
 
@@ -12,7 +12,7 @@
 
 (defobject reverie/raw
   {:table "batteries_raw"
-   :migration {:path "src/reverie/sql/objects/migrations/raw/"
+   :migration {:path "src/reverie/batteries/objects/migrations/raw/"
                :automatic? true}
    :fields {:text {:name "Text"
                    :type :textarea
