@@ -75,7 +75,7 @@
   [:div.reset-password
    (if-not (str/blank? title) [:h2 title])
    (if-not (str/blank? description_email_sent) description_email_sent)])
-(defmethod present-reset-password :default [_ _ _ _] nil)
+(defmethod present-reset-password :default [_] nil)
 
 
 ;; object multi function for :get
@@ -98,7 +98,12 @@
                     (email-form nil params)
                     (email-form nil)))]}
          (select-keys properties [:title :description_reset])))
-(defmethod reset-password :default [_ _ _ _])
+(defmethod reset-password "reset-password" [{{db :database} :request} object {:keys [mode]} {:keys [token]}]
+  (let [token? (auth/expired-token? token db)]
+    (cond
+      (not token?)
+      {:status :reset-password/expired-token})))
+(defmethod reset-password :default [_ _ _ _] nil)
 
 
 ;; object multi function for :post
@@ -116,7 +121,7 @@
               minutes (or (settings/get settings [:batteries :reset-password :minutes])
                           60)
               token (auth/enable-token (:id user) minutes db)]
-          (send-email! #spy/t (assoc properties
+          (send-email! (assoc properties
                               ;; define a method that caches ::catch
                               ;; for overriding the email functionality
                               :status ::catch
