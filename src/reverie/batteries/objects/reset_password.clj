@@ -3,6 +3,7 @@
             [ez-form.core :refer [defform] :as form]
             [hiccup.core :refer [html]]
             [reverie.auth :as auth]
+            [reverie.batteries.ez-form.wrappers]
             [reverie.core :refer [defobject defrenderer]]
             [reverie.email :as email]
             [reverie.i18n :refer [t]]
@@ -57,6 +58,11 @@
                         :url url
                         :token token))))
 
+(defn delay-t [k] (fn ([_] (t k))
+                     ([_ _] (t k))))
+
+;;((delay-t :foo-bar) nil nil)
+
 (def ^:dynamic *email-chart*
   [:table.table.reset-password.email
    [:tr :?email.wrapper
@@ -66,7 +72,7 @@
      :$email.help
      :$email.errors]]
    [:tr
-    [:td [:button.btn.btn-primary (t :reverie.batteries.objects.reset-password.form/submit)]]]])
+    [:td [:button.btn.btn-primary :?i18n.t :reverie.batteries.objects.reset-password.form/submit]]]])
 
 (def ^:dynamic *password-chart*
   [:table.table.reset-password.password
@@ -83,28 +89,28 @@
      :$repeat-password.help
      :$repeat-password.errors]]
    [:tr
-    [:td [:button.btn.btn-primary (t :reverie.batteries.objects.reset-password.form/submit)]]]])
+    [:td [:button.btn.btn-primary :?i18n.t :reverie.batteries.objects.reset-password.form/submit]]]])
 
 (defform email-form
   {}
   [{:name :email
-    :label (t :reverie.batteries.objects.reset-password.form.email/label)
-    :placeholder (t :reverie.batteries.objects.reset-password.form.email/placeholder)
+    :label (delay-t :reverie.batteries.objects.reset-password.form.email/label)
+    :placeholder (delay-t :reverie.batteries.objects.reset-password.form.email/placeholder)
     :validation (vlad/attr [:email] (vlad/present))}])
 
 (defform password-form
   {}
   [{:name :password
     :type :password
-    :label (t :reverie.batteries.objects.reset-password.form.password/label)
-    :placeholder (t :reverie.batteries.objects.reset-password.form.password/placeholder)
+    :label (delay-t :reverie.batteries.objects.reset-password.form.password/label)
+    :placeholder (delay-t :reverie.batteries.objects.reset-password.form.password/placeholder)
     :opt {:min 8}
     :validation (vlad/attr [:password] (vlad/join (vlad/present)
                                                   (vlad/length-over 8)))}
    {:name :repeat-password
     :type :password
-    :label (t :reverie.batteries.objects.reset-password.form.repeat-password/label)
-    :placeholder (t :reverie.batteries.objects.reset-password.form.repeat-password/placeholder)
+    :label (delay-t :reverie.batteries.objects.reset-password.form.repeat-password/label)
+    :placeholder (delay-t :reverie.batteries.objects.reset-password.form.repeat-password/placeholder)
     :opt {:min 8}
     :validation (vlad/equals-field [:password] [:repeat-password])}])
 
