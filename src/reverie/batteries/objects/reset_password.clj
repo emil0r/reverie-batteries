@@ -61,8 +61,6 @@
 (defn delay-t [k] (fn ([_] (t k))
                      ([_ _] (t k))))
 
-;;((delay-t :foo-bar) nil nil)
-
 (def ^:dynamic *email-chart*
   [:table.table.reset-password.email
    [:tr :?email.wrapper
@@ -162,7 +160,7 @@
   {:status :reset/password-reset
    :title title
    :description description})
-(defmethod reset-password :reset [request object {title :title_reset description :description_reset} params]
+(defmethod reset-password :reset [request object {title :title description :description} params]
   {:status :reset
    :form [:form {:method "post"
                  :action ""}
