@@ -7,13 +7,16 @@ Following included:
 - objects
   - reverie/image (basic image object)
   - reverie/raw (will put out the raw output exactly as is, handle with care)
+  - reverie/reset-password (reset password object, renderer enabled)
   - reverie/text (basic text object)
 
 ## Usage
 
 ```clojure
-[reverie-batteries "0.3.2"]
+[reverie-batteries "0.4.0"]
 ```
+
+Assumes reverie 0.8 or higher.
 
 ## License
 
