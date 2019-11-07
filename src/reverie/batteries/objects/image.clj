@@ -26,7 +26,7 @@
 
 (defobject reverie/image
   {:table "batteries_image"
-   :migration {:path "src/reverie/batteries/objects/migrations/image/"
+   :migration {:path "reverie/batteries/objects/migrations/image/"
                :automatic? true}
    :fields {:title {:name "Title"
                     :type :text

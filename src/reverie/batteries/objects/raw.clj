@@ -12,7 +12,7 @@
 
 (defobject reverie/raw
   {:table "batteries_raw"
-   :migration {:path "src/reverie/batteries/objects/migrations/raw/"
+   :migration {:path "reverie/batteries/objects/migrations/raw/"
                :automatic? true}
    :fields {:text {:name "Text"
                    :type :textarea

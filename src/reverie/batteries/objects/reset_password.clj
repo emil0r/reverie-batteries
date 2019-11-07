@@ -6,8 +6,8 @@
             [reverie.batteries.ez-form.wrappers]
             [reverie.core :refer [defobject defrenderer]]
             [reverie.email :as email]
+            [reverie.http.response :refer [redirect!]]
             [reverie.i18n :refer [t]]
-            [reverie.response :refer [redirect!]]
             [reverie.settings :as settings]
             [reverie.util :as util]
             [vlad.core :as vlad]))
@@ -238,8 +238,7 @@
   {:table "batteries_reset_password"
    :renderer ::renderer
    :i18n "reverie/batteries/i18n/reset-password.edn"
-   :migration {:path "src/reverie/batteries/objects/migrations/reset-password"
-               :table "migrations_reverie_reset_password"
+   :migration {:path "reverie/batteries/objects/migrations/reset-password"
                :automatic? true}
    :fields {:title {:name "Title"
                     :type :text

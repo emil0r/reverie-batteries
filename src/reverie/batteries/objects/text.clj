@@ -6,7 +6,7 @@
 
 (defobject reverie/text
   {:table "batteries_text"
-   :migration {:path "src/reverie/batteries/objects/migrations/text/"
+   :migration {:path "reverie/batteries/objects/migrations/text/"
                :automatic? true}
    :fields {:text {:initial ""
                    :type :richtext
