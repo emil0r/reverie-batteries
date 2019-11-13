@@ -10,6 +10,9 @@ Following included:
   - reverie/reset-password (reset password object, renderer enabled)
   - reverie/text (basic text object)
 
+- helpers
+  - menu/get-menu-pages gets a tree structure of trees under the root page to be used for constructing a menu
+
 ## Usage
 
 ```clojure
@@ -20,7 +23,7 @@ Assumes reverie 0.8 or higher.
 
 ## License
 
-Copyright © 2014-2016 Emil Bengtsson
+Copyright © 2014-2019 Emil Bengtsson
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
 
