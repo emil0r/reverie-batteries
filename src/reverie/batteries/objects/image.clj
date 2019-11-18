@@ -41,8 +41,10 @@
                   :initial ""
                   :max 255}
             :height {:name "Height"
-                     :type :number}
+                     :type :number
+                     :initial nil}
             :width {:name "Width"
-                    :type :number}}
+                    :type :number
+                    :initial nil}}
    :sections [{:fields [:src :title :alt :height :width]}]}
   {:any image})
