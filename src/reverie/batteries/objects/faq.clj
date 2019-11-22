@@ -1,4 +1,4 @@
-(ns ra.objects.faq
+(ns reverie.batteries.objects.faq
   (:require [ez-database.core :as db]
             [reverie.core :refer [defobject defrenderer]]))
 

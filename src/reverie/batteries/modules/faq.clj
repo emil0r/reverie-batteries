@@ -1,4 +1,4 @@
-(ns ra.modules.faq
+(ns reverie.batteries.modules.faq
   (:require [ez-database.core :as db]
             [ez-web.breadcrumbs :refer [crumb]]
             [ez-web.uri :refer [join-uri]]
