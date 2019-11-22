@@ -1,4 +1,4 @@
-(defproject reverie-batteries "0.7.1"
+(defproject reverie-batteries "0.8.0"
 
   :description "Batteries for reverie"
 
